@@ -10,7 +10,7 @@ function App() {
   const [coin, setCoin] = useState('');
   const [crytoCoin, setCrytoCoin] = useState('');
   const [loading, setLoading] = useState(false); 
-  const [result, setResult] = useState({});
+  const [resultado, setResult] = useState({});
 
   useEffect(() => {
 
@@ -37,7 +37,7 @@ function App() {
     cotizarCryptomoneda();
   },[coin,crytoCoin])
 
-  const component = (loading) ? <Spinner/> : <Cotizacion result ={result}/>;
+  const component = (loading) ? <Spinner/> : <Cotizacion/>;
 
   return (
    <div className="container">

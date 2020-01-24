@@ -3,14 +3,12 @@ import image from './cryptomonedas.png';
 import FormCrypto from './components/FormCrypto';
 import Axios from 'axios';
 import Spinner from './Utils/Spinner/Spinner';
-import Cotizacion from './components/Cotizacion';
 function App() {
 
 
   const [coin, setCoin] = useState('');
   const [crytoCoin, setCrytoCoin] = useState('');
   const [loading, setLoading] = useState(false); 
-  const [result, setResult] = useState({});
 
   useEffect(() => {
 
@@ -23,13 +21,12 @@ function App() {
       
       const result = await Axios.get(url);
 
-     
+      console.log(result);
       
       setLoading(true)
 
       setTimeout(() => {
         setLoading(false);
-        setResult(result.data.DISPLAY[crytoCoin][coin])
       }, 3000)
 
     }
@@ -37,7 +34,7 @@ function App() {
     cotizarCryptomoneda();
   },[coin,crytoCoin])
 
-  const component = (loading) ? <Spinner/> : <Cotizacion result ={result}/>;
+  const component = (loading) ? <Spinner/> : null;
 
   return (
    <div className="container">
